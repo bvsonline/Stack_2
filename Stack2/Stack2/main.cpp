@@ -99,9 +99,11 @@ void stackDispose(Stack_t *s)
     free(s->sElement);
 }
 
-
 void stackPush(Stack_t *s, void *elemAddr)
 {
+    if (s->allocated_length == 0)
+        stackNew(s, s->elementSize);
+    
     if (s->logical_length == s->allocated_length)
         stackGrow(s);
     
@@ -114,6 +116,7 @@ void stackPush(Stack_t *s, void *elemAddr)
 
 void stackPop(Stack_t *s, void *elemAddr)
 {
+    assert(s->logical_length > 0);
     void *source = (char *)s->sElement + (s->logical_length-1) * s->elementSize;
     memcpy(elemAddr, source, s->elementSize);
     s->logical_length--;

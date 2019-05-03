@@ -10,124 +10,60 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-
-typedef struct Stack{
-    
-    void *sElement;
-    int logical_length;
-    int allocated_length;
-    int elementSize;
-    
-}Stack_t;
-
-void stackNew(Stack_t *s, int elementSize);
-static void stackGrow(Stack_t *s);
-void stackDispose(Stack_t *s);
-void stackPush(Stack_t *s, void *elemAddr);
-void stackPop(Stack_t *s, void *elemAddr);
-
+#include "stack.hpp"
 
 int main ()
 {
     printf("Hello World \n");
     
-    Stack_t stack;
-    int element_size = 4;
-    int element;
-    
-    stackNew(&stack, element_size);
-    
-    //  push elements 10, 200, 5008, 548900, 45567
-    element = 10;
-    stackPush(&stack, &element);
-    
-    element = 200;
-    stackPush(&stack, &element);
-    
-    element = 5008;
-    stackPush(&stack, &element);
-    
-    element = 548900;
-    stackPush(&stack, &element);
-    
-    element = 45567;
-    stackPush(&stack, &element);
-    
-    element = 9887669;
-    stackPush(&stack, &element);
-    
-    //  pop elements
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    stackPop(&stack, &element);
-    printf("Popped Element: %d \n", element);
-    
-    
-    stackDispose(&stack);
+    testCode_p1();
     
     return 0;
 }
 
-void stackNew(Stack_t *s, int elementSize)
+
+typedef struct Movie{
+    char * name;
+    int year;
+} movie;
+
+void testCode_p1(void)
 {
-    s->logical_length = 0;
-    s->allocated_length = 4;
-    s->elementSize = elementSize;
-    s->sElement = malloc(s->allocated_length*elementSize);
+    Stack_t *s;
     
-    assert(s->sElement != NULL);
+    s = stackNew(sizeof(movie));
     
+    movie m1, m2, m3, m4, m5;
+    
+    m1.name = (char *)"MOVIE 1";
+    m1.year = 2011;
+    
+    m2.name = (char *)"MOVIE 2";
+    m2.year = 2012;
+    
+    m3.name = (char *)"MOVIE 3";
+    m3.year = 2013;
+
+    m4.name = (char *)"MOVIE 4";
+    m4.year = 2014;
+    
+    m5.name = (char *)"MOVIE 5";
+    m5.year = 2015;
+    
+    push(s, &m1);
+    push(s, &m2);
+    push(s, &m3);
+    push(s, &m4);
+    push(s, &m5);
+    
+    pop(s, &m2);
+    pop(s, &m1);
+    pop(s, &m1);
+    pop(s, &m1);
+    pop(s, &m1);
+    
+    stackDispose(s);
     return;
 }
 
-void stackDispose(Stack_t *s)
-{
-    free(s->sElement);
-}
 
-void stackPush(Stack_t *s, void *elemAddr)
-{
-    if (s->allocated_length == 0)
-        stackNew(s, s->elementSize);
-    
-    if (s->logical_length == s->allocated_length)
-        stackGrow(s);
-    
-    void *target = (char *)s->sElement + s->logical_length * s->elementSize;
-    
-    memcpy(target, elemAddr, s->elementSize);
-    s->logical_length++;
-    
-}
-
-void stackPop(Stack_t *s, void *elemAddr)
-{
-    assert(s->logical_length > 0);
-    void *source = (char *)s->sElement + (s->logical_length-1) * s->elementSize;
-    memcpy(elemAddr, source, s->elementSize);
-    s->logical_length--;
-    
-    return;
-}
-
-static void stackGrow(Stack_t *s)
-{
-    s->allocated_length *= 2;
-    s->sElement = realloc(s->sElement, s->allocated_length*s->elementSize);
-    assert(s->sElement != NULL);
-    return;
-}

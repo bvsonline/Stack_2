@@ -52,7 +52,11 @@ void push(Stack_t *s, void *elemAddr)
 
 void pop(Stack_t *s, void *elemAddr)
 {
-    assert(s->logical_length > 0);
+    //assert(s->logical_length > 0);
+    if(isStackEmpty(s))
+    {
+        return;
+    }
     void *source = (char *)s->sElement + (s->logical_length-1) * s->elementSize;
     memcpy(elemAddr, source, s->elementSize);
     s->logical_length--;
@@ -66,4 +70,9 @@ static void stackGrow(Stack_t *s)
     s->sElement = realloc(s->sElement, s->allocated_length*s->elementSize);
     assert(s->sElement != NULL);
     return;
+}
+
+int isStackEmpty(Stack_t *s)
+{
+    return s->logical_length == 0;
 }

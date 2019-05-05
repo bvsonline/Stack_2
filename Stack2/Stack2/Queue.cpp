@@ -102,3 +102,69 @@ int queueGrow(Q *q)
     assert(q);
     return 0;
 }
+
+
+/********************
+ Queue implementation with Linked List
+ ********************/
+Q_ll * createQueue_ll()
+{
+    Q_ll *q = (Q_ll *)malloc(sizeof(Q_ll));
+    assert(q);
+    
+    q->read = q->write = NULL;
+    
+    return q;
+}
+
+void enQueue_ll(Q_ll *q, int data)
+{
+    List *list = (List *)malloc(sizeof(List));
+    assert(list);
+
+    list->data = data;
+    list->next = NULL;
+    
+    if (q->write)
+        q->write->next = list;
+    
+    q->write = list;
+    
+    if (q->read == NULL)
+        q->read = q->write;
+    
+    return;
+}
+
+void deQueue_ll(Q_ll *q, int *data)
+{
+    if (isQueueEmpty_ll(q))
+    {
+        return;
+    }
+
+    *data = q->read->data;
+    List * temp = q->read;
+    if (q->read->next == NULL)
+    {
+        // Queue empty
+        q->read = q->write = NULL;
+    }
+    else
+    {
+        q->read = q->read->next;
+    }
+    free(temp);
+    
+    return;
+}
+
+int isQueueEmpty_ll(Q_ll *q)
+{
+    return q->read == NULL;
+}
+
+void deleteQueue_ll(Q_ll *q)
+{
+    free(q);
+}

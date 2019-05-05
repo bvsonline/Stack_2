@@ -35,4 +35,23 @@ int queueGrow(Q *q);
 
 void testCode_Queue(void);
 
+
+typedef struct ListNode{
+    int data;
+    struct ListNode *next;
+}List;
+
+typedef struct QueueLL{
+    List *write;
+    List *read;
+} Q_ll;
+
+Q_ll * createQueue_ll();
+void enQueue_ll(Q_ll *q, int data);
+void deQueue_ll(Q_ll *q, int *data);
+int isQueueEmpty_ll(Q_ll *q);
+void deleteQueue_ll(Q_ll *q);
+
+
+
 #endif /* Queue_hpp */

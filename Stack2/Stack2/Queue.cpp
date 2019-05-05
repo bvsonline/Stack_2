@@ -34,8 +34,11 @@ int enQueue(Q *q, void *element)
     
     if (isQueueFull(q))
     {
+#if 0
         printf("Queue Overflow \n");
         return -1;
+#endif
+        queueGrow(q);
     }
     
     q->write = (q->write+1)%q->capacity;
@@ -90,4 +93,12 @@ void deleteQueue(Q *q)
 {
     free(q->QElem);
     free(q);
+}
+
+int queueGrow(Q *q)
+{
+    q->capacity *= 2;
+    q = (Q *)realloc(q, q->capacity*q->elementSize);
+    assert(q);
+    return 0;
 }

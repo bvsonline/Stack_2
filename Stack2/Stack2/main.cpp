@@ -99,6 +99,10 @@ void testCode_Queue(void)
     enQueue(q, &m3);
     enQueue(q, &m4);
     enQueue(q, &m5);
+    enQueue(q, &m5);
+    enQueue(q, &m4);
+    enQueue(q, &m3);
+    enQueue(q, &m2);
     
     deQueue(q, &m2);
     deQueue(q, &m1);

@@ -31,7 +31,7 @@ int deQueue(Q *q, void *element);
 int isQueueEmpty(Q *q);
 int isQueueFull(Q *q);
 void deleteQueue(Q *q);
-int queueGrow(Q *q);
+void queueGrow(Q *q);
 
 void testCode_Queue(void);
 

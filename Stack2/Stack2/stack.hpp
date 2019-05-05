@@ -28,6 +28,6 @@ void stackDispose(Stack_t *s);
 void push(Stack_t *s, void *elemAddr);
 void pop(Stack_t *s, void *elemAddr);
 
-void testCode_p1(void);
+void testCode_Stack(void);
 
 #endif /* stack_hpp */

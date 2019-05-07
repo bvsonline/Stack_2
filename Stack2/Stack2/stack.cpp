@@ -12,7 +12,7 @@
 #include <string.h>
 #include "stack.hpp"
 
-#define INITIAL_STACK_ALLOC_SIZE        4
+#define INITIAL_STACK_SIZE        64
 
 static void stackGrow(Stack_t *s);
 
@@ -22,7 +22,7 @@ Stack_t * stackNew(int elementSize)
     assert(s);
     
     s->logical_length = 0;
-    s->allocated_length = INITIAL_STACK_ALLOC_SIZE;
+    s->allocated_length = INITIAL_STACK_SIZE;
     s->elementSize = elementSize;
     s->sElement = malloc(s->allocated_length*elementSize);
     

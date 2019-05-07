@@ -29,6 +29,6 @@ void push(Stack_t *s, void *elemAddr);
 void pop(Stack_t *s, void *elemAddr);
 int isStackEmpty(Stack_t *s);
 
-void testCode_Stack(void);
+
 
 #endif /* stack_hpp */

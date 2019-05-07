@@ -13,13 +13,13 @@
 #include "Queue.hpp"
 
 // Queue implementation
-
+#define INITIAL_QUEUE_SIZE  64
 Q * createQueue(int elementSize)
 {
     Q *queue = (Q *) malloc(sizeof(Q));
     assert(queue);
     queue->read = queue->write = -1;
-    queue->capacity = 4;
+    queue->capacity = INITIAL_QUEUE_SIZE;
     queue->elementSize = elementSize;
     queue->QElem = malloc(sizeof(queue->capacity*elementSize));
     assert(queue->QElem);
@@ -34,7 +34,7 @@ int enQueue(Q *q, void *element)
     
     if (isQueueFull(q))
     {
-#if 0
+#if 1
         printf("Queue Overflow \n");
         return -1;
 #else
@@ -100,11 +100,16 @@ void deleteQueue(Q *q)
 
 void queueGrow(Q *q)
 {
+    void * temp = NULL;
     q->capacity *= 2;
-    q->QElem = (void *)realloc(q->QElem, q->capacity*q->elementSize);
-    if (q->QElem == NULL)
+    temp = (void *)realloc(q->QElem, q->capacity*q->elementSize);
+    if (temp == NULL)
     {
         printf("realloc failed \n");
+    }
+    else
+    {
+        temp = q->QElem;
     }
     assert(q->QElem);
     return;

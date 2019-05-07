@@ -33,7 +33,7 @@ int isQueueFull(Q *q);
 void deleteQueue(Q *q);
 void queueGrow(Q *q);
 
-void testCode_Queue(void);
+
 
 
 typedef struct ListNode{

@@ -37,4 +37,6 @@ void testCode_searchElementBinaryTree(void);
 
 void testCode_insertElementBinaryTree(void);
 
+void testCode_findSizeOfBinaryTree(void);
+
 #endif /* test_hpp */

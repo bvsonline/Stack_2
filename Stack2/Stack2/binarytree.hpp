@@ -44,4 +44,10 @@ int searchElementBinaryTree(treeNode *root, int searchElement);
 // Insert an element in Binary tree
 treeNode * InsertanElementBinaryTree(treeNode *root, int data);
 
+// Find size of Binary tree by recursion
+int findSizeOfBinaryTreeByRecursion(treeNode * root);
+
+// Find size of binary tree by non-recursion
+int findSizeOfBinaryTreeByNonRecursion(treeNode * root);
+
 #endif /* binarytree_hpp */

@@ -46,6 +46,8 @@ int main ()
     
     testCode_insertElementBinaryTree();
     
+    testCode_findSizeOfBinaryTree();
+    
     return 0;
 }
 
@@ -322,3 +324,27 @@ void testCode_insertElementBinaryTree(void)
     return;
 }
 
+void testCode_findSizeOfBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    
+    int nodeCnt = findSizeOfBinaryTreeByRecursion(tree);
+    dprint(Node Count by Recursion, nodeCnt);
+    nodeCnt = findSizeOfBinaryTreeByNonRecursion(tree);
+    dprint(Node Count by Non-Recursion, nodeCnt);
+    
+    sprint(Insert an Element \n);
+    tree = InsertanElementBinaryTree(tree, 8);
+    levelOrderNonRecursiveTraversal(tree);
+    printf("\n");
+
+    sprint(Find size of Binary tree \n);
+    nodeCnt = findSizeOfBinaryTreeByRecursion(tree);
+    dprint(Node Count by Recursion, nodeCnt);
+    nodeCnt = findSizeOfBinaryTreeByNonRecursion(tree);
+    dprint(Node Count by Non-Recursion, nodeCnt);
+    
+    deleteTree(tree);
+    printf("\n");
+    return;
+}

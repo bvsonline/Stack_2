@@ -332,3 +332,30 @@ treeNode * InsertanElementBinaryTree(treeNode *root, int data)
     return rootBank;
 }
 
+int findSizeOfBinaryTreeByRecursion(treeNode * root)
+{
+    if (root == NULL)
+        return 0;
+    else
+        return findSizeOfBinaryTreeByRecursion(root->left) + 1 + findSizeOfBinaryTreeByRecursion(root->right);
+}
+
+int findSizeOfBinaryTreeByNonRecursion(treeNode * root)
+{
+    if (root == NULL)
+        return 0;
+    
+    std::queue<treeNode *> q;
+    int node_count = 0;
+    q.push(root);
+    
+    while (!q.empty()) {
+        root = q.front();
+        q.pop();
+        node_count++;
+        if(root->left)  q.push(root->left);
+        if(root->right) q.push(root->right);
+    }
+    
+    return node_count;
+}

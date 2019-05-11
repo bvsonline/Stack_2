@@ -10,6 +10,7 @@
 #include "binarytree.hpp"
 #include "utilities.h"
 #include "stack.hpp"
+#include "Queue.hpp"
 
 
 treeNode * createTree()
@@ -137,3 +138,100 @@ void preOrderNonRecursiveTraversal(treeNode *root)
     
     printf ("\n");
 }
+
+void inOrder(treeNode * root)
+{
+    if (root)
+    {
+        inOrder(root->left);
+        printf("%d\t",root->data);
+        inOrder(root->right);
+    }
+    return;
+}
+
+void inOrderNonRecursiveTraversal(treeNode *root)
+{
+    Stack_t *s = stackNew(sizeof(treeNode));
+    
+    while (1) {
+        
+        while (root) {
+            push(s, &root);
+            root = root->left;
+        }
+        if(isStackEmpty(s))
+            break;
+        pop(s, &root);
+        printf("%d\t",root->data);
+        root = root->right;
+    }
+    
+    stackDispose(s);
+    
+    printf("\n");
+}
+
+void postOrder(treeNode * root)
+{
+    if (root)
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        printf("%d\t",root->data);
+    }
+    return;
+}
+
+void postOrderNonRecursiveTraversal(treeNode *root)
+{
+    Stack_t *s = stackNew(sizeof(treeNode));
+    treeNode *previous = NULL;
+    do {
+        while (root) {
+            push(s, &root);
+            root = root->left;
+        }
+        while (root == NULL && !isStackEmpty(s)) {
+            top(s, &root);
+            if(root->right == NULL || root->right == previous)
+            {
+                printf("%d \t", root->data);
+                pop(s, &root);
+                previous = root;
+                root = NULL;
+            }
+            else
+            {
+                root = root->right;
+            }
+        }
+    } while(!isStackEmpty(s));
+    
+    stackDispose(s);
+    return;
+}
+
+void levelOrderNonRecursiveTraversal(treeNode *root)
+{
+    if (root == NULL)
+        return;
+
+    Queue *q = createQueue(sizeof(treeNode));
+    enQueue(q, &root);
+    
+    while (!isQueueEmpty(q)) {
+        
+        deQueue(q, &root);
+        printf("%d \t", root->data);
+        if(root->left)
+            enQueue(q, &(root->left));
+        if(root->right)
+            enQueue(q, &(root->right));
+    }
+    
+    deleteQueue(q);
+    
+    return;
+}
+

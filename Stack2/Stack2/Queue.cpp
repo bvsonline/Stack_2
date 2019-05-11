@@ -16,6 +16,7 @@
 #define INITIAL_QUEUE_SIZE  64
 Q * createQueue(int elementSize)
 {
+#if 1
     Q *queue = (Q *) malloc(sizeof(Q));
     assert(queue);
     queue->read = queue->write = -1;
@@ -24,6 +25,16 @@ Q * createQueue(int elementSize)
     queue->QElem = malloc(sizeof(queue->capacity*elementSize));
     assert(queue->QElem);
     return queue;
+#else
+    Q queue;    // = (Q *) malloc(sizeof(Q));
+    //assert(queue);
+    queue.read = queue.write = -1;
+    queue.capacity = INITIAL_QUEUE_SIZE;
+    queue.elementSize = elementSize;
+    queue.QElem = malloc(sizeof(queue.capacity*elementSize));
+    assert(queue.QElem);
+    return &queue;
+#endif
 }
 
 int enQueue(Q *q, void *element)
@@ -43,7 +54,7 @@ int enQueue(Q *q, void *element)
     }
     
     q->write = (q->write+1)%q->capacity;
-    void *target = (char *) q->QElem + (q->write * q->elementSize);
+    char *target = (char *) q->QElem + (q->write * q->elementSize);
     memcpy(target, element, q->elementSize);
     if (q->read == -1)
     {
@@ -96,6 +107,7 @@ void deleteQueue(Q *q)
     q->QElem = NULL;
     free(q);
     q = NULL;
+    return;
 }
 
 void queueGrow(Q *q)

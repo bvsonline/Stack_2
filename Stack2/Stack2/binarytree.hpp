@@ -18,9 +18,21 @@ typedef struct TreeNode {
 } treeNode;
 
 treeNode * createTree(void);
-void preOrder(treeNode * root);
 void deleteTree(treeNode *root);
 
+// preOrder
+void preOrder(treeNode * root);
 void preOrderNonRecursiveTraversal(treeNode *root);
+
+// InOrder
+void inOrder(treeNode * root);
+void inOrderNonRecursiveTraversal(treeNode *root);
+
+// postOrder
+void postOrder(treeNode * root);
+void postOrderNonRecursiveTraversal(treeNode *root);
+
+// levelOrder
+void levelOrderNonRecursiveTraversal(treeNode *root);
 
 #endif /* binarytree_hpp */

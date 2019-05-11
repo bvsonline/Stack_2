@@ -30,6 +30,16 @@ int main ()
     
     testCode_preOrderNonRecursiveTraversal();
     
+    testCode_inOrder();
+    
+    testCode_inOrderNonRecursiveTraversal();
+    
+    testCode_postOrder();
+    
+    testCode_postOrderNonRecursiveTraversal();
+    
+    testCode_levelOrderTraversal();
+    
     return 0;
 }
 
@@ -86,7 +96,11 @@ void testCode_Queue(void)
     
     q = createQueue(sizeof(movie));
     
-    movie m1, m2, m3, m4, m5;
+    movie m1 __attribute__((aligned(16))),
+        m2 __attribute__((aligned(16))),
+        m3 __attribute__((aligned(16))),
+        m4 __attribute__((aligned(16))),
+        m5 __attribute__((aligned(16)));
     
     m1.name = (char *)"MOVIE 1";
     m1.year = 2011;
@@ -219,3 +233,46 @@ void testCode_preOrderNonRecursiveTraversal()
     return;
 }
 
+void testCode_inOrder(void)
+{
+    treeNode * tree = createTree();
+    inOrder(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_inOrderNonRecursiveTraversal(void)
+{
+    treeNode * tree = createTree();
+    inOrderNonRecursiveTraversal(tree);
+    deleteTree(tree);
+    return;
+}
+
+void testCode_postOrder(void)
+{
+    treeNode * tree = createTree();
+    postOrder(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_postOrderNonRecursiveTraversal(void)
+{
+    treeNode * tree = createTree();
+    postOrderNonRecursiveTraversal(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_levelOrderTraversal(void)
+{
+    treeNode * tree = createTree();
+    levelOrderNonRecursiveTraversal(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}

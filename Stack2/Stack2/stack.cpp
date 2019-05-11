@@ -64,6 +64,19 @@ void pop(Stack_t *s, void *elemAddr)
     return;
 }
 
+void top(Stack_t *s, void *elemAddr)
+{
+    if(isStackEmpty(s))
+    {
+        return;
+    }
+    
+    void *source = (char *)s->sElement + (s->logical_length-1) * s->elementSize;
+    memcpy(elemAddr, source, s->elementSize);
+    
+    return;
+}
+
 static void stackGrow(Stack_t *s)
 {
     s->allocated_length *= 2;

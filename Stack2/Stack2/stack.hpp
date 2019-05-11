@@ -27,6 +27,7 @@ Stack_t * stackNew(int elementSize);
 void stackDispose(Stack_t *s);
 void push(Stack_t *s, void *elemAddr);
 void pop(Stack_t *s, void *elemAddr);
+void top(Stack_t *s, void *elemAddr);
 int isStackEmpty(Stack_t *s);
 
 

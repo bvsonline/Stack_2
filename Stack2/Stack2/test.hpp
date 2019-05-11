@@ -31,4 +31,8 @@ void testCode_postOrderNonRecursiveTraversal(void);
 
 void testCode_levelOrderTraversal(void);
 
+void testCode_findMaxElementBinaryTree(void);
+
+void testCode_searchElementBinaryTree(void);
+
 #endif /* test_hpp */

@@ -10,7 +10,9 @@
 #include "binarytree.hpp"
 #include "utilities.h"
 #include "stack.hpp"
-#include "Queue.hpp"
+//#include "Queue.hpp"
+#include <iostream>
+#include <queue>
 
 
 treeNode * createTree()
@@ -217,21 +219,66 @@ void levelOrderNonRecursiveTraversal(treeNode *root)
     if (root == NULL)
         return;
 
-    Queue *q = createQueue(sizeof(treeNode));
-    enQueue(q, &root);
+    std::queue<treeNode *> q;
+    q.push(root);
     
-    while (!isQueueEmpty(q)) {
-        
-        deQueue(q, &root);
+    while (!q.empty()) {
+        root = q.front();
+        q.pop();
         printf("%d \t", root->data);
         if(root->left)
-            enQueue(q, &(root->left));
+            q.push(root->left);
         if(root->right)
-            enQueue(q, &(root->right));
+            q.push(root->right);
     }
-    
-    deleteQueue(q);
-    
     return;
 }
 
+// Give an algorithm to find maximum element in binary tree
+int findMaxElementBinaryTree(treeNode *root)
+{
+    assert(root);
+    
+    std::queue<treeNode *> q;
+    int maxElement = MIN_INT32;
+    q.push(root);
+    
+    while (!q.empty()) {
+        root = q.front();
+        q.pop();
+        if (root->data > maxElement)
+            maxElement = root->data;
+        if (root->left)
+            q.push(root->left);
+        if (root->right)
+            q.push(root->right);
+    }
+    dprint(max Element, maxElement);
+    return maxElement;
+    
+}
+
+// search for a element in binary tree,
+// if found please return 1, orherwsie return 0
+
+int searchElementBinaryTree(treeNode *root, int searchElement)
+{
+    assert(root);
+    
+    std::queue<treeNode *> q;
+    
+    q.push(root);
+    while (!q.empty())
+    {
+        root = q.front();
+        q.pop();
+        if (root->data == searchElement)
+            return 1;
+        if (root->left)
+            q.push(root->left);
+        if (root->right)
+            q.push(root->right);
+    }
+    
+    return 0;
+}

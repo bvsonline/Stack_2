@@ -40,6 +40,10 @@ int main ()
     
     testCode_levelOrderTraversal();
     
+    testCode_findMaxElementBinaryTree();
+    
+    testCode_searchElementBinaryTree();
+    
     return 0;
 }
 
@@ -272,6 +276,30 @@ void testCode_levelOrderTraversal(void)
 {
     treeNode * tree = createTree();
     levelOrderNonRecursiveTraversal(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_findMaxElementBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    findMaxElementBinaryTree(tree);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_searchElementBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    int element_found = searchElementBinaryTree(tree, 8);
+    if (element_found)
+        dprint(Element Found, element_found);
+    
+    element_found = searchElementBinaryTree(tree, 6);
+    if (element_found)
+        dprint(Element Found, element_found);
     deleteTree(tree);
     printf("\n");
     return;

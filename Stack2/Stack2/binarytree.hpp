@@ -35,4 +35,10 @@ void postOrderNonRecursiveTraversal(treeNode *root);
 // levelOrder
 void levelOrderNonRecursiveTraversal(treeNode *root);
 
+// find maximum elemnt in binary tree
+int findMaxElementBinaryTree(treeNode *root);
+
+// search element in binary tree
+int searchElementBinaryTree(treeNode *root, int searchElement);
+
 #endif /* binarytree_hpp */

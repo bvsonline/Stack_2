@@ -21,4 +21,6 @@ treeNode * createTree(void);
 void preOrder(treeNode * root);
 void deleteTree(treeNode *root);
 
+void preOrderNonRecursiveTraversal(treeNode *root);
+
 #endif /* binarytree_hpp */

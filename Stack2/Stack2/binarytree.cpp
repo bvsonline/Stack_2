@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "binarytree.hpp"
 #include "utilities.h"
+#include "stack.hpp"
 
 
 treeNode * createTree()
@@ -70,6 +71,8 @@ void deleteTree(treeNode *root)
     deleteTree(root->right);
     //  Delete current node only after deleting subtrees
     free(root);
+    root = NULL;
+    return;
 #if 0
     treeNode * root = (treeNode *)malloc(sizeof(treeNode));
     root->data = 1;
@@ -109,4 +112,28 @@ void deleteTree(treeNode *root)
     return root;
 
 #endif
+}
+
+void preOrderNonRecursiveTraversal(treeNode *root)
+{
+    Stack_t *s;
+    s = stackNew(sizeof(treeNode));
+    
+    while (1)
+    {
+        while (root)
+        {
+            printf ("%d\t",root->data);
+            push(s, &root);
+            root = root->left;
+        }
+        
+        if(isStackEmpty(s))
+            break;
+        pop(s, &root);
+        root = root->right;
+    }
+    stackDispose(s);
+    
+    printf ("\n");
 }

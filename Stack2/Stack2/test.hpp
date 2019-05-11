@@ -21,5 +21,6 @@ void testCode_Stack(void);
 void testCode_p3(void);
 int CheckStackPairwiseOrder(Stack_t *S);
 void testCode_treePreorderTraversal(void);
+void testCode_preOrderNonRecursiveTraversal(void);
 
 #endif /* test_hpp */

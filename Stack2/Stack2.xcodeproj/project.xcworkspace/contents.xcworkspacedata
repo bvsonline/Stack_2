@@ -2,6 +2,43 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Stack2.xcodeproj">
+      location = "group:/Users/bvsonline/Documents/CPP_test/Stack2/Stack2/Stack2/Stack2/binarytree.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/bvsonline/Documents/CPP_test/Stack2/Stack2/Stack2/Stack2/binarytree.hpp">
+   </FileRef>
+   <Group
+      location = "group:../Stack2"
+      name = "Stack2">
+      <FileRef
+         location = "group:binarytree.cpp">
+      </FileRef>
+      <FileRef
+         location = "group:binarytree.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:main.cpp">
+      </FileRef>
+      <FileRef
+         location = "group:Queue.cpp">
+      </FileRef>
+      <FileRef
+         location = "group:Queue.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:stack.cpp">
+      </FileRef>
+      <FileRef
+         location = "group:stack.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:test.hpp">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:/Users/bvsonline/Documents/CPP_test/Stack2/Stack2/Stack2/Stack2/test.hpp">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

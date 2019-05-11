@@ -28,6 +28,8 @@ int main ()
     
     testCode_treePreorderTraversal();
     
+    testCode_preOrderNonRecursiveTraversal();
+    
     return 0;
 }
 
@@ -208,4 +210,12 @@ void testCode_treePreorderTraversal()
     return;
 }
 
+
+void testCode_preOrderNonRecursiveTraversal()
+{
+    treeNode * tree = createTree();
+    preOrderNonRecursiveTraversal(tree);
+    deleteTree(tree);
+    return;
+}
 

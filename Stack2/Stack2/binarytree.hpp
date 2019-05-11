@@ -41,4 +41,7 @@ int findMaxElementBinaryTree(treeNode *root);
 // search element in binary tree
 int searchElementBinaryTree(treeNode *root, int searchElement);
 
+// Insert an element in Binary tree
+treeNode * InsertanElementBinaryTree(treeNode *root, int data);
+
 #endif /* binarytree_hpp */

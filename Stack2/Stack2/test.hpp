@@ -35,4 +35,6 @@ void testCode_findMaxElementBinaryTree(void);
 
 void testCode_searchElementBinaryTree(void);
 
+void testCode_insertElementBinaryTree(void);
+
 #endif /* test_hpp */

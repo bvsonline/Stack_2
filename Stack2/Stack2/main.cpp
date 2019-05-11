@@ -44,6 +44,8 @@ int main ()
     
     testCode_searchElementBinaryTree();
     
+    testCode_insertElementBinaryTree();
+    
     return 0;
 }
 
@@ -304,3 +306,19 @@ void testCode_searchElementBinaryTree(void)
     printf("\n");
     return;
 }
+
+void testCode_insertElementBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    tree = InsertanElementBinaryTree(tree, 8);
+    printf("\n");
+    levelOrderNonRecursiveTraversal(tree);
+    printf("\n");
+    int element_found = searchElementBinaryTree(tree, 6);
+    if (element_found)
+        dprint(Element Found, element_found);
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+

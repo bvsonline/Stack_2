@@ -282,3 +282,53 @@ int searchElementBinaryTree(treeNode *root, int searchElement)
     
     return 0;
 }
+
+// add an element to existing binary tree
+// left node/right node which ever occurs first
+treeNode * InsertanElementBinaryTree(treeNode *root, int data)
+{
+    treeNode *newNode = new treeNode;
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    
+    if (root == NULL)
+    {
+        root = newNode;
+        return root;
+    }
+    treeNode *rootBank = root;
+    
+    std::queue<treeNode *> q;
+    
+    q.push(root);
+    
+    while (!q.empty())
+    {
+        root = q.front();
+        q.pop();
+        
+        if (root->left)
+        {
+            q.push(root->left);
+        }
+        else
+        {
+            root->left = newNode;
+            break;
+        }
+        
+        if (root->right)
+        {
+            q.push(root->right);
+        }
+        else
+        {
+            root->right = newNode;
+            break;
+        }
+    }
+    
+    return rootBank;
+}
+

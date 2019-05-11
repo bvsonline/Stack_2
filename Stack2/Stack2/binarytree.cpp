@@ -13,6 +13,7 @@
 //#include "Queue.hpp"
 #include <iostream>
 #include <queue>
+#include <stack>
 
 
 treeNode * createTree()
@@ -332,6 +333,7 @@ treeNode * InsertanElementBinaryTree(treeNode *root, int data)
     return rootBank;
 }
 
+// find the size of binary tree by recursion
 int findSizeOfBinaryTreeByRecursion(treeNode * root)
 {
     if (root == NULL)
@@ -340,6 +342,7 @@ int findSizeOfBinaryTreeByRecursion(treeNode * root)
         return findSizeOfBinaryTreeByRecursion(root->left) + 1 + findSizeOfBinaryTreeByRecursion(root->right);
 }
 
+// find the size of binary tree by non-recursion
 int findSizeOfBinaryTreeByNonRecursion(treeNode * root)
 {
     if (root == NULL)
@@ -358,4 +361,83 @@ int findSizeOfBinaryTreeByNonRecursion(treeNode * root)
     }
     
     return node_count;
+}
+
+
+// print the tree elements in reverse order of level ordered traverse
+void printLevelOrderedTraversalInReverseOrder(treeNode * root)
+{
+    if (root == NULL)
+        return;
+    std::stack<treeNode *> stk;
+    std::queue<treeNode *> que;
+    
+    que.push(root);
+    while (!que.empty()) {
+        root = que.front();
+        que.pop();
+        if (root->left) que.push(root->left);
+        if (root->right) que.push(root->right);
+        stk.push(root);
+    }
+    
+    while (!stk.empty()) {
+        printf("%d \t",stk.top()->data);
+        stk.pop();
+    }
+    
+    return;
+}
+
+// Find the heightOfBinarytree
+int HeightOfBinaryTree(treeNode * root)
+{
+    int leftHeight, rightHeight;
+    if (root == NULL)
+        return 0;
+    else
+    {
+        leftHeight = HeightOfBinaryTree(root->left);
+        rightHeight = HeightOfBinaryTree(root->right);
+        if (leftHeight > rightHeight)
+        {
+            return leftHeight+1;
+        }
+        else
+        {
+            return rightHeight+1;
+        }
+    }
+}
+int HeightOfBinaryTreeNoRecursion(treeNode * root)
+{
+    if (root == NULL)
+        return 0;
+    
+    std::queue<treeNode *> que;
+    int level = 0;
+    
+    que.push(root);
+    que.push(NULL); //  indicating one level done
+    
+    while (!que.empty())
+    {
+        root = que.front();
+        que.pop();
+        if (root == NULL)
+        {
+            level++;
+            if(!que.empty())
+                que.push(NULL);
+        }
+        else
+        {
+            if (root->left)
+                que.push(root->left);
+            if (root->right)
+                que.push(root->right);
+        }
+    }
+    
+    return level;
 }

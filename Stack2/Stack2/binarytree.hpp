@@ -50,4 +50,13 @@ int findSizeOfBinaryTreeByRecursion(treeNode * root);
 // Find size of binary tree by non-recursion
 int findSizeOfBinaryTreeByNonRecursion(treeNode * root);
 
+// Print the tree elements in reverse order of level ordered traversal
+void printLevelOrderedTraversalInReverseOrder(treeNode * root);
+
+// find the height of binary  tree
+int HeightOfBinaryTree(treeNode * root);
+
+// find the height of binary tree with no recursion
+int HeightOfBinaryTreeNoRecursion(treeNode * root);
+
 #endif /* binarytree_hpp */

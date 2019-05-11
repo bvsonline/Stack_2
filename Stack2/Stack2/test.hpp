@@ -39,4 +39,8 @@ void testCode_insertElementBinaryTree(void);
 
 void testCode_findSizeOfBinaryTree(void);
 
+void testCode_printReverseOrderOfLevelOrderTraversal(void);
+
+void testCode_findHeightOfBinaryTree(void);
+
 #endif /* test_hpp */

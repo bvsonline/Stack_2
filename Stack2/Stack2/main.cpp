@@ -48,6 +48,10 @@ int main ()
     
     testCode_findSizeOfBinaryTree();
     
+    testCode_printReverseOrderOfLevelOrderTraversal();
+    
+    testCode_findHeightOfBinaryTree();
+    
     return 0;
 }
 
@@ -343,6 +347,52 @@ void testCode_findSizeOfBinaryTree(void)
     dprint(Node Count by Recursion, nodeCnt);
     nodeCnt = findSizeOfBinaryTreeByNonRecursion(tree);
     dprint(Node Count by Non-Recursion, nodeCnt);
+    
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_printReverseOrderOfLevelOrderTraversal(void)
+{
+    treeNode * tree = createTree();
+    
+    int nodeCnt = findSizeOfBinaryTreeByRecursion(tree);
+    dprint(Node Count by Recursion, nodeCnt);
+    nodeCnt = findSizeOfBinaryTreeByNonRecursion(tree);
+    dprint(Node Count by Non-Recursion, nodeCnt);
+    
+    printLevelOrderedTraversalInReverseOrder(tree);
+    
+    sprint(\nInsert an Element \n);
+    tree = InsertanElementBinaryTree(tree, 8);
+    levelOrderNonRecursiveTraversal(tree);
+    printf("\n");
+    printLevelOrderedTraversalInReverseOrder(tree);
+    
+    sprint(\nFind size of Binary tree \n);
+    nodeCnt = findSizeOfBinaryTreeByRecursion(tree);
+    dprint(Node Count by Recursion, nodeCnt);
+    nodeCnt = findSizeOfBinaryTreeByNonRecursion(tree);
+    dprint(Node Count by Non-Recursion, nodeCnt);
+    
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_findHeightOfBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    
+    int height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
+    
+    sprint(\nInsert an Element \n);
+    tree = InsertanElementBinaryTree(tree, 8);
+    
+    height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
     
     deleteTree(tree);
     printf("\n");

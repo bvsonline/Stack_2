@@ -54,6 +54,8 @@ int main ()
     
     testCode_findDeepestNodeOfBinaryTree();
     
+    testCode_findNumberOfLeafNodesInBinaryTree();
+    
     return 0;
 }
 
@@ -424,3 +426,34 @@ void testCode_findDeepestNodeOfBinaryTree(void)
     printf("\n");
     return;
 }
+
+void testCode_findNumberOfLeafNodesInBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    
+    int height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
+    
+    treeNode * temp = findDeepestNodeinBinaryTree(tree);
+    dprint(Deepest Node of Binary tree, temp->data);
+    
+    int NumberOfLeafNodes = findNumberOfLeafNodesInBinaryTree(tree);
+    dprint(Number of Leafs Node in Binary tree, NumberOfLeafNodes);
+    
+    sprint(\nInsert an Element \n);
+    tree = InsertanElementBinaryTree(tree, 8);
+    
+    height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
+    
+    temp = findDeepestNodeinBinaryTree(tree);
+    dprint(Deepest Node of Binary tree, temp->data);
+    
+    NumberOfLeafNodes = findNumberOfLeafNodesInBinaryTree(tree);
+    dprint(Number of Leafs Node in Binary tree, NumberOfLeafNodes);
+    
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+

@@ -465,3 +465,43 @@ treeNode * findDeepestNodeinBinaryTree(treeNode * root)
     
     return temp;
 }
+
+// Give an algorithm for finding number of leaves in
+// binary tree with out recursion.
+int findNumberOfLeafNodesInBinaryTree(treeNode *root)
+{
+    if (root == NULL)
+        return 0;
+    std::queue<treeNode *> qu;
+    int leaf_node_count = 0;
+    std::vector<int> leafNode;
+    qu.push(root);
+    
+    while (!qu.empty()) {
+        
+        root = qu.front();
+        qu.pop();
+        
+        if ((root->left == NULL)&& (root->right == NULL))
+        {
+            leaf_node_count++;
+            leafNode.push_back(root->data);
+        }
+        else
+        {
+            if (root->left)
+                qu.push(root->left);
+            if (root->right)
+                qu.push(root->right);
+        }
+    }
+    
+    sprint(\n);
+    for (int i=0; i < leafNode.size(); i++)
+    {
+        printINT(leafNode[i]);
+    }
+    sprint(\n);
+    
+    return leaf_node_count;
+}

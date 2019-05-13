@@ -62,4 +62,7 @@ int HeightOfBinaryTreeNoRecursion(treeNode * root);
 // find the deepest node of binary tree with no recursion
 treeNode * findDeepestNodeinBinaryTree(treeNode * root);
 
+// find the leaf nodes of binary tree with no recursion
+int findNumberOfLeafNodesInBinaryTree(treeNode *root);
+
 #endif /* binarytree_hpp */

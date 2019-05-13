@@ -45,4 +45,6 @@ void testCode_findHeightOfBinaryTree(void);
 
 void testCode_findDeepestNodeOfBinaryTree(void);
 
+void testCode_findNumberOfLeafNodesInBinaryTree(void);
+
 #endif /* test_hpp */

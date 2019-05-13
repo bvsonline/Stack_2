@@ -409,6 +409,7 @@ int HeightOfBinaryTree(treeNode * root)
         }
     }
 }
+// Give an algorithm for height of binary tree
 int HeightOfBinaryTreeNoRecursion(treeNode * root)
 {
     if (root == NULL)
@@ -440,4 +441,27 @@ int HeightOfBinaryTreeNoRecursion(treeNode * root)
     }
     
     return level;
+}
+
+// Give an algorithm for finding deepest node of the binary tree
+treeNode * findDeepestNodeinBinaryTree(treeNode * root)
+{
+    if (root == NULL)
+        return root;
+    
+    std::queue<treeNode *> qu;
+    treeNode * temp = NULL;
+    
+    qu.push(root);
+    while(!qu.empty())
+    {
+        temp = qu.front();
+        qu.pop();
+        if (temp->left)
+            qu.push(temp->left);
+        if (temp->right)
+            qu.push(temp->right);
+    }
+    
+    return temp;
 }

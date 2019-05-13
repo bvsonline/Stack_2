@@ -43,4 +43,6 @@ void testCode_printReverseOrderOfLevelOrderTraversal(void);
 
 void testCode_findHeightOfBinaryTree(void);
 
+void testCode_findDeepestNodeOfBinaryTree(void);
+
 #endif /* test_hpp */

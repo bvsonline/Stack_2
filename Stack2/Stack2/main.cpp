@@ -52,6 +52,8 @@ int main ()
     
     testCode_findHeightOfBinaryTree();
     
+    testCode_findDeepestNodeOfBinaryTree();
+    
     return 0;
 }
 
@@ -393,6 +395,30 @@ void testCode_findHeightOfBinaryTree(void)
     
     height = HeightOfBinaryTreeNoRecursion(tree);
     dprint(Binary Tree Height, height);
+    
+    deleteTree(tree);
+    printf("\n");
+    return;
+}
+
+void testCode_findDeepestNodeOfBinaryTree(void)
+{
+    treeNode * tree = createTree();
+    
+    int height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
+    
+    treeNode * temp = findDeepestNodeinBinaryTree(tree);
+    dprint(Deepest Node of Binary tree, temp->data);
+    
+    sprint(\nInsert an Element \n);
+    tree = InsertanElementBinaryTree(tree, 8);
+    
+    height = HeightOfBinaryTreeNoRecursion(tree);
+    dprint(Binary Tree Height, height);
+    
+    temp = findDeepestNodeinBinaryTree(tree);
+    dprint(Deepest Node of Binary tree, temp->data);
     
     deleteTree(tree);
     printf("\n");

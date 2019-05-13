@@ -443,6 +443,9 @@ void testCode_findNumberOfLeafNodesInBinaryTree(void)
     int NumberOfFullNodes = findNumberOfFullNodesInBinaryTree(tree);
     dprint(Number of Full Nodes in Binary tree, NumberOfFullNodes);
     
+    int NumberOfHalfNodes = findNumberOfHalfNodesInBinaryTree(tree);
+    dprint(Number of Half Nodes in Binary tree, NumberOfHalfNodes);
+    
     sprint(\nInsert an Element \n);
     tree = InsertanElementBinaryTree(tree, 8);
     
@@ -457,6 +460,9 @@ void testCode_findNumberOfLeafNodesInBinaryTree(void)
     
     NumberOfFullNodes = findNumberOfFullNodesInBinaryTree(tree);
     dprint(Number of Full Nodes in Binary tree, NumberOfFullNodes);
+    
+    NumberOfHalfNodes = findNumberOfHalfNodesInBinaryTree(tree);
+    dprint(Number of Half Nodes in Binary tree, NumberOfHalfNodes);
     
     deleteTree(tree);
     printf("\n");

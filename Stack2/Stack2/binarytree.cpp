@@ -533,3 +533,29 @@ int findNumberOfFullNodesInBinaryTree(treeNode *root)
     
     return fullNode_count;
 }
+
+// Give an algorithm for finding number of half nodes in
+// binary tree with out recursion.
+// half nodes will have either left node or right node.
+int findNumberOfHalfNodesInBinaryTree(treeNode *root)
+{
+    if (root == NULL)
+        return 0;
+    
+    std::queue<treeNode *> qu;
+    int numberOfHalfNodes = 0;
+    
+    qu.push(root);
+    while (!qu.empty()) {
+        root = qu.front();
+        qu.pop();
+        if ((!root->left && root->right ) || (root->left && !root->right))
+            numberOfHalfNodes++;
+        
+        if (root->left)
+            qu.push(root->left);
+        if (root->right)
+            qu.push(root->right);
+    }
+    return numberOfHalfNodes;
+}

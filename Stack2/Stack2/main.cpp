@@ -464,8 +464,51 @@ void testCode_findNumberOfLeafNodesInBinaryTree(void)
     NumberOfHalfNodes = findNumberOfHalfNodesInBinaryTree(tree);
     dprint(Number of Half Nodes in Binary tree, NumberOfHalfNodes);
     
+    treeNode *tree2 = BuildNewBinaryTree();
+    
+    height = HeightOfBinaryTreeNoRecursion(tree2);
+    dprint(Binary Tree Height, height);
+    
+    temp = findDeepestNodeinBinaryTree(tree2);
+    dprint(Deepest Node of Binary tree, temp->data);
+    
+    NumberOfLeafNodes = findNumberOfLeafNodesInBinaryTree(tree2);
+    dprint(Number of Leafs Node in Binary tree, NumberOfLeafNodes);
+    
+    NumberOfFullNodes = findNumberOfFullNodesInBinaryTree(tree2);
+    dprint(Number of Full Nodes in Binary tree, NumberOfFullNodes);
+    
+    NumberOfHalfNodes = findNumberOfHalfNodesInBinaryTree(tree2);
+    dprint(Number of Half Nodes in Binary tree, NumberOfHalfNodes);
+    
+    int isIdentical = determineIfBinaryTreesIdenticalNonRecurive(tree, tree2);
+    //int isIdentical = determineIfBinaryTreesIdentical(tree, tree2);
+    if (isIdentical)
+    {
+        sprint(Binary trees are identical);
+    }
+    else
+    {
+        sprint(Binary trees are non identical);
+    }
+    
     deleteTree(tree);
+    deleteTree(tree2);
     printf("\n");
     return;
+}
+
+treeNode * BuildNewBinaryTree(void)
+{
+    treeNode * tree = NULL;
+    for (int i=0; i<15;i++)
+    {
+        tree = InsertanElementBinaryTree(tree, (i+1)*(i+1));
+    }
+    
+    levelOrderNonRecursiveTraversal(tree);
+    printf("\n");
+    
+    return tree;
 }
 

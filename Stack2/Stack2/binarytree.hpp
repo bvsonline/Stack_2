@@ -71,4 +71,12 @@ int findNumberOfFullNodesInBinaryTree(treeNode *root);
 // find the half nodes of binary tree with no recursion
 int findNumberOfHalfNodesInBinaryTree(treeNode *root);
 
+// Give an algorithm to find if two binary trees are
+// identical structurally.
+int determineIfBinaryTreesIdentical(treeNode *tree1, treeNode *tree2);
+
+// Give an algorithm to find if two binary trees are
+// identical structurally - Non-recursive
+int determineIfBinaryTreesIdenticalNonRecurive(treeNode *tree1, treeNode *tree2);
+
 #endif /* binarytree_hpp */

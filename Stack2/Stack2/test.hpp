@@ -15,6 +15,7 @@
 #include <string.h>
 #include "stack.hpp"
 #include "Queue.hpp"
+#include "binarytree.hpp"
 
 void testCode_Queue(void);
 void testCode_Stack(void);
@@ -46,5 +47,7 @@ void testCode_findHeightOfBinaryTree(void);
 void testCode_findDeepestNodeOfBinaryTree(void);
 
 void testCode_findNumberOfLeafNodesInBinaryTree(void);
+
+treeNode * BuildNewBinaryTree(void);
 
 #endif /* test_hpp */

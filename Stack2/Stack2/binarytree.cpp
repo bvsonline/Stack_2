@@ -559,3 +559,61 @@ int findNumberOfHalfNodesInBinaryTree(treeNode *root)
     }
     return numberOfHalfNodes;
 }
+
+// Give an algorithm to find if two binary trees are
+// identical structurally.
+int determineIfBinaryTreesIdentical(treeNode *tree1, treeNode *tree2)
+{
+    if ((tree1 == NULL) && (tree2 == NULL))
+        return 1;
+    if ((tree1 == NULL) || (tree2 == NULL))
+        return 0;
+    
+    return determineIfBinaryTreesIdentical(tree1->left, tree2->left) &&
+    determineIfBinaryTreesIdentical(tree1->right, tree2->right);
+}
+
+// Give an algorithm to find if two binary trees are
+// identical structurally - Non-recursive
+int determineIfBinaryTreesIdenticalNonRecurive(treeNode *tree1, treeNode *tree2)
+{
+    if ((tree1 == NULL) && (tree2 == NULL))
+        return 1;
+    if ((tree1 == NULL) || (tree2 == NULL))
+        return 0;
+    
+    std::queue<treeNode *> qu1, qu2;
+    qu1.push(tree1);
+    qu2.push(tree2);
+    
+    while (!qu1.empty() && !qu2.empty())
+    {
+        tree1 = qu1.front();
+        qu1.pop();
+        tree2 = qu2.front();
+        qu2.pop();
+        
+        if ((tree1->left) && (tree2->left))
+        {
+            qu1.push(tree1->left);
+            qu2.push(tree2->left);
+        }
+        else
+        {
+            if ((!tree1->left && tree2->left) || (tree1->left && !tree2->left))
+                return 0;
+        }
+        if ((tree1->right) && (tree2->right))
+        {
+            qu1.push(tree1->right);
+            qu2.push(tree2->right);
+        }
+        else
+        {
+            if ((!tree1->right && tree2->right) || (tree1->right && !tree2->right))
+                return 0;
+        }
+    }
+    
+    return 1;
+}

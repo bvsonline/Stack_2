@@ -505,3 +505,31 @@ int findNumberOfLeafNodesInBinaryTree(treeNode *root)
     
     return leaf_node_count;
 }
+
+// Give an algorithm for finding number of full nodes in
+// binary tree with out recursion.
+// full nodes will have left node and right node.
+int findNumberOfFullNodesInBinaryTree(treeNode *root)
+{
+    if (root == NULL)
+        return 0;
+    
+    std::queue<treeNode *> qu;
+    int fullNode_count = 0;
+    qu.push(root);
+    
+    while (!qu.empty()) {
+        root = qu.front();
+        qu.pop();
+        if (root->left && root->right)
+        {
+            fullNode_count++;
+        }
+        if (root->left)
+            qu.push(root->left);
+        if (root->right)
+            qu.push(root->right);
+    }
+    
+    return fullNode_count;
+}

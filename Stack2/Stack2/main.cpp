@@ -492,6 +492,11 @@ void testCode_findNumberOfLeafNodesInBinaryTree(void)
         sprint(Binary trees are non identical);
     }
     
+    printf("\n");
+    
+    int maxLevel = FindLevelwithMaxSum(tree);
+    dprint(Max Level, maxLevel);
+    
     deleteTree(tree);
     deleteTree(tree2);
     printf("\n");

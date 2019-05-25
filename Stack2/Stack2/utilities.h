@@ -15,6 +15,9 @@
 #define MAX_INT32   2147483647
 #define MIN_INT32   -2147483648
 
+#define true    1
+#define false   0
+
 #define sprint(expr)    printf(#expr)
 #define printINT(d)     printf("%d\n",d)
 #define dprint(expr, d) printf(#expr": %d\n", d)

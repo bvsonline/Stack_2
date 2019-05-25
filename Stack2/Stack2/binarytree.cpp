@@ -617,3 +617,50 @@ int determineIfBinaryTreesIdenticalNonRecurive(treeNode *tree1, treeNode *tree2)
     
     return 1;
 }
+
+
+int FindLevelwithMaxSum(treeNode *root)
+{
+    std::queue<treeNode *> qu;
+    int level = 0, maxLevel = 0, currentSum = 0, maxSum = 0;
+    
+    if (root == NULL)
+        return 0;
+    
+    currentSum += root->data;
+    qu.push(root);
+    qu.push(NULL);
+    
+    while (!qu.empty())
+    {
+        root = qu.front();
+        qu.pop();
+        if (root == NULL)
+        {
+            if (currentSum > maxSum)
+            {
+                maxSum = currentSum;
+                maxLevel = level;
+            }
+            currentSum = 0;
+            level++;
+            
+            if (!qu.empty())
+                qu.push(NULL);
+        }
+        else
+        {
+            currentSum += root->data;
+            if (root->left)
+            {
+                qu.push(root->left);
+            }
+            if (root->right)
+            {
+                qu.push(root->right);
+            }
+        }
+    }
+    
+    return maxLevel;
+}

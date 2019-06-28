@@ -497,6 +497,15 @@ void testCode_findNumberOfLeafNodesInBinaryTree(void)
     int maxLevel = FindLevelwithMaxSum(tree);
     dprint(Max Level, maxLevel);
     
+    int maxSum = findTheSumOfAllNodesInBinaryTree(tree);
+    dprint(Maximum Sum, maxSum);
+    
+    treeNode * tree3 = createTree();
+    inOrder(tree3);
+    printf("\n");
+    tree = MirrorOfTheBinaryTreeIterative(tree3);
+    inOrder(tree);
+    
     deleteTree(tree);
     deleteTree(tree2);
     printf("\n");

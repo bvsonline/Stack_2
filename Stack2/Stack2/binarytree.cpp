@@ -182,6 +182,7 @@ void postOrder(treeNode * root)
         postOrder(root->left);
         postOrder(root->right);
         printf("%d\t",root->data);
+        
     }
     return;
 }
@@ -618,7 +619,7 @@ int determineIfBinaryTreesIdenticalNonRecurive(treeNode *tree1, treeNode *tree2)
     return 1;
 }
 
-
+// FInd the level that the nodes has maximum sum
 int FindLevelwithMaxSum(treeNode *root)
 {
     std::queue<treeNode *> qu;
@@ -663,4 +664,103 @@ int FindLevelwithMaxSum(treeNode *root)
     }
     
     return maxLevel;
+}
+
+
+// Find the sum of all nodes in binary tree
+int findTheSumOfAllNodesInBinaryTree(treeNode *root)
+{
+    if (root == NULL)
+        return 0;
+    
+    std::queue<treeNode *>qu;
+    int sum = 0;
+    
+    qu.push(root);
+    while (!qu.empty()) {
+        root = qu.front();
+        qu.pop();
+        sum += root->data;
+        
+        if (root->left)
+            qu.push(root->left);
+        if (root->right)
+            qu.push(root->right);
+    }
+    
+    return sum;
+}
+
+
+// Give an algorithm for converting a tree to its mirror
+treeNode * MirrorOfTheBinaryTreeRecursion(treeNode *root)
+{
+    treeNode *temp;
+    
+    if (root)
+    {
+        MirrorOfTheBinaryTreeRecursion(root->left);
+        MirrorOfTheBinaryTreeRecursion(root->right);
+        
+        temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+    }
+    return root;
+}
+
+treeNode * MirrorOfTheBinaryTreeIterative(treeNode *root)
+{
+    if (root == NULL)
+        return NULL;
+    treeNode *temp = root;
+    
+    std::queue<treeNode *> qu;
+    qu.push(root);
+
+    while (!qu.empty())
+    {
+        root = qu.front();
+        qu.pop();
+        std::swap(root->left, root->right);
+        if (root->left)
+            qu.push(root->left);
+        if (root->right)
+            qu.push(root->right);
+    }
+    return temp;
+}
+
+int areTreesMirrorImageRecursion(treeNode *a, treeNode *b)
+{
+    if ((a==NULL) && (b==NULL))
+        return true;
+    if ((a==NULL) || (b==NULL))
+        return false;
+    if (a->data != b->data)
+        return false;
+    else
+        return areTreesMirrorImageRecursion(a->left, b->right) && areTreesMirrorImageRecursion(a->right, b->left);
+}
+
+
+int areTreesMirrorImageIterative(treeNode *a, treeNode *b)
+{
+    if ((a==NULL) && (b==NULL))
+        return true;
+    if ((a==NULL) || (b==NULL))
+        return false;
+
+    std::queue<treeNode *> qu1, qu2;
+    
+    qu1.push(a);
+    qu2.push(b);
+    
+    while (!qu1.empty() && !qu2.empty()) {
+        a=qu1.front();qu1.pop();
+        b=qu2.front();qu2.pop();
+        
+        if (a->)
+    }
+    
 }

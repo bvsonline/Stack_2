@@ -82,4 +82,16 @@ int determineIfBinaryTreesIdenticalNonRecurive(treeNode *tree1, treeNode *tree2)
 // Give an algorithm to find level with maximum sum
 int FindLevelwithMaxSum(treeNode *root);
 
+// Give an algorithm to find sum of all nodes in binary tree
+int findTheSumOfAllNodesInBinaryTree(treeNode *root);
+
+// Give an algorithm to return the mirror of the binary tree
+treeNode * MirrorOfTheBinaryTreeRecursion(treeNode *root);
+
+// Give an algorithm to return the mirror of the binary tree iterative way
+treeNode * MirrorOfTheBinaryTreeIterative(treeNode *root);
+
+// Give an algorithm to check if two trees are mirrors to each other
+int areTreesMirrorImageRecursion(treeNode *a, treeNode *b);
+
 #endif /* binarytree_hpp */
